@@ -1,6 +1,4 @@
 import express from "express";
-import jwt from "jsonwebtoken";
-import bcrypt from "bcrypt";
 import "dotenv/config";
 import sequelize from "./database/connection.js";
 import userRoutes from "./routes/user-routes.js";
@@ -10,8 +8,17 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 app.use(express.json());
-app.use("/api", userRoutes);
-app.use("/api", authRoutes);
+app.use("/api/usuarios", userRoutes);
+app.use("/api/autenticacion", authRoutes);
+
+/* 
+ENDPOINTS
+POST   /api/usuarios -> Registrarse
+POST   /api/auth/login -> Logearse
+GET    /api/usuarios/perfil -> Ver perfil
+PUT    /api/usuarios -> Editar usuario
+DELETE /api/usuarios -> Eliminar usuario
+*/
 
 async function inicialize () {
   try {

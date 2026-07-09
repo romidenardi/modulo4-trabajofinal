@@ -29,3 +29,5 @@ Se utilizó inteligencia artificial generativa para:
 
 * Desarrollar la autenticación de usuarios con JWT.
 * Analizar la estructura óptima para el desarrollo del CRUD.
+* Agregar validaciones.
+* Validar código y corregir errores.

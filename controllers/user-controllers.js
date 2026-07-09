@@ -1,6 +1,6 @@
 import * as userServices from "../services/user-services.js";
 
-export async function create(req, res) {
+export async function createUser(req, res) {
   try {
     const exists = await userServices.searchByEmail(req.body.email);
     if(exists){
@@ -24,3 +24,33 @@ export async function create(req, res) {
         .json({error: "Error al crear el usuario: ", detalle: error.message});
   };
 };
+
+export function getProfile(req, res) {
+  res
+  .status(200)
+  .json({mensaje: "Perfil obtenido correctamente.", usuario: req.loggedUser});
+};
+
+export async function updateUser(req, res) {
+  try {
+    const userId = req.loggedUser.id;
+    const data = req.body;
+    const updatedUser = await userServices.updateUser(userId, data);
+    res
+      .status(200)
+      .json({mensaje: "Perfil actualizado correctamente.",usuario: updatedUser,});
+  } catch (error) {
+    res.status(500).json({error: "Error al actualizar el perfil.", detalle: error.message});
+}};
+
+export function deleteUser(req, res) {
+  try {
+    const userId = req.loggedUser.id;
+    const deletedUser = await userServices.deleteUser(userId);
+    res
+      .status(200)
+      .json({mensaje: "Perfil eliminado correctamente."});
+  } catch (error) {
+    res.status(500).json({error: "Error al eliminar el perfil.", detalle: error.message,});
+}};
+

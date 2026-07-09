@@ -5,7 +5,8 @@ import {
   generateRefreshToken,
 } from "../tokens/user-tokens.js";
 
-export async function login(email, password) {  const user = await userServices.searchByEmail(email);
+export async function login(email, password) {  
+  const user = await userServices.searchByEmail(email);
   if (!user) {
     throw new Error("Usuario inexistente.");
   }

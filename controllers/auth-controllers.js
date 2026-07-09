@@ -11,10 +11,3 @@ export async function login(req, res) {
     });
   };
 };
-
-export function profile(req, res) {
-  res.json({
-    mensaje: "Perfil obtenido correctamente.",
-    usuario: req.loggedUser,
-  });
-};
