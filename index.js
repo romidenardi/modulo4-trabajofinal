@@ -4,12 +4,14 @@ import bcrypt from "bcrypt";
 import "dotenv/config";
 import sequelize from "./database/connection.js";
 import userRoutes from "./routes/user-routes.js";
+import authRoutes from "./routes/auth-routes.js";
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 
 app.use(express.json());
 app.use("/api", userRoutes);
+app.use("/api", authRoutes);
 
 async function inicialize () {
   try {
