@@ -38,10 +38,6 @@ export const validateUserUpdate = [
     .optional()
     .isLength({ min: 2 })
     .withMessage("El nombre debe tener al menos dos caracteres."),
-  body("email")
-    .optional()
-    .isEmail()
-    .withMessage("Debés ingresar un email válido."),
   body("password")
     .optional()
     .isLength({ min: 8 })

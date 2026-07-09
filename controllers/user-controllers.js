@@ -6,7 +6,7 @@ export async function createUser(req, res) {
     if(exists){
       return res.status(409).json({error: "El email ya está registrado."});
       }
-    const newUser = await userServices.create(req.body);
+    const newUser = await userServices.createUser(req.body);
     res
       .status(201)
       .json({
@@ -43,7 +43,7 @@ export async function updateUser(req, res) {
     res.status(500).json({error: "Error al actualizar el perfil.", detalle: error.message});
 }};
 
-export function deleteUser(req, res) {
+export async function deleteUser(req, res) {
   try {
     const userId = req.loggedUser.id;
     const deletedUser = await userServices.deleteUser(userId);
@@ -53,4 +53,3 @@ export function deleteUser(req, res) {
   } catch (error) {
     res.status(500).json({error: "Error al eliminar el perfil.", detalle: error.message,});
 }};
-

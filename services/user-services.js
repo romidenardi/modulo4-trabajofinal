@@ -1,6 +1,5 @@
 import bcrypt from "bcrypt";
 import User from "../database/models/users.js";
-import { checkAccessToken } from "../middlewares/auth-middleware.js";
 
 const SALT_ROUNDS = 10;
 
@@ -30,11 +29,17 @@ export async function searchById(id) {
 }; 
 
 export async function updateUser(id, data) {
-  const updatedUser = await User.update(
-    {name: data.name, password: data.password,},
-    {where: {id},}
-  );
-  return updatedUser;
+  const updateData = {};
+  if (data.name) {
+    updateData.name = data.name;
+  }
+  if (data.password) {
+    updateData.password = await bcrypt.hash(data.password, SALT_ROUNDS);
+  }
+  await User.update(updateData, {
+    where: {id},
+  });
+  return await searchById(id);
 };
 
 export async function deleteUser(id) {
@@ -42,6 +47,3 @@ export async function deleteUser(id) {
     where: {id},
   });
 };
-
-
-

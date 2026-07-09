@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { validationErrorsHandler, validateUserCreation, validateLogin, validateUserUpdate } from "../validators/user-validators.js";
 import * as userControllers from "../controllers/user-controllers.js";
-import { checkAccessToken } from "../middlewares/auth-middleware.js";
+import { checkAccessToken } from "../middlewares/auth-middlewares.js";
 
 const router = Router();
 
@@ -14,8 +14,6 @@ router.post(
 
 router.get(
   "/perfil",
-  validateLogin,
-  validationErrorsHandler,
   checkAccessToken,
   userControllers.getProfile,
 );

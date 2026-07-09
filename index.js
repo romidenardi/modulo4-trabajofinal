@@ -14,7 +14,7 @@ app.use("/api/autenticacion", authRoutes);
 /* 
 ENDPOINTS
 POST   /api/usuarios -> Registrarse
-POST   /api/auth/login -> Logearse
+POST   /api/autenticacion/login -> Logearse
 GET    /api/usuarios/perfil -> Ver perfil
 PUT    /api/usuarios -> Editar usuario
 DELETE /api/usuarios -> Eliminar usuario
