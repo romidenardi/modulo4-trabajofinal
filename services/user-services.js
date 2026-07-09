@@ -1,5 +1,6 @@
 import bcrypt from "bcrypt";
 import User from "../database/models/users.js";
+import { sendWelcomeEmail } from "./mail-services.js";
 
 const SALT_ROUNDS = 10;
 
@@ -11,7 +12,12 @@ export async function createUser(data) {
     email,
     password: hashedPassword,
     role,
-  });  
+  });
+  try {
+    await sendWelcomeEmail(newUser);
+  } catch (error) {
+    console.error("Error al enviar el mail de bienvenida:", error.message);
+  }  
   const {password: _, ...newUserWOutPass} = newUser.toJSON();
   return newUserWOutPass;
 };
