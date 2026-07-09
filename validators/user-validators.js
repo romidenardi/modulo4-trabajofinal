@@ -17,8 +17,7 @@ export const validateUserCreation = [
     .isLength({min:8})
     .withMessage("La contraseña debe tener al menos ocho caracteres"),
   body("role")
-    .notEmpty()
-    .withMessage("El rol es obligatorio.")
+    .optional()
     .isIn(["admin", "usuario"])
     .withMessage("El rol solo puede ser 'admin' o 'usuario'."),
 ];

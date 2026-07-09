@@ -9,7 +9,15 @@ export async function create(req, res) {
     const newUser = await userServices.create(req.body);
     res
       .status(201)
-      .json({mensaje: `Usuario ${req.body.name} creado exitosamente`});
+      .json({
+        mensaje: `Usuario ${req.body.name} creado exitosamente.`,
+        usuario: {
+          id: newUser.id,
+          name: newUser.name,
+          email: newUser.email,
+          role: newUser.role
+        }
+      });
   } catch(error) {
       res
         .status(500)

@@ -11,4 +11,4 @@ router.post(
   userControllers.create,
 );
 
-export default Router();
+export default router;
