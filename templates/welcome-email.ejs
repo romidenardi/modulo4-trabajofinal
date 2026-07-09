@@ -1,5 +1,81 @@
-<h1>¡Hola, <%= name %>!</h1>
-
-<p>Gracias por registrarte en nuestra aplicación.</p>
-
-<p>Tu cuenta fue creada correctamente.</p>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<style>
+body{
+    margin:0;
+    padding:40px;
+    background:#f5f7fa;
+    font-family:Arial, Helvetica, sans-serif;
+}
+.container{
+    max-width:600px;
+    margin:auto;
+    background:white;
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+.header{
+    background:#3b82f6;
+    color:white;
+    padding:30px;
+    text-align:center;
+}
+.header h1{
+    margin:0;
+}
+.content{
+    padding:40px;
+    color:#444;
+    line-height:1.7;
+}
+.button{
+    display:inline-block;
+    margin-top:25px;
+    padding:14px 24px;
+    background:#3b82f6;
+    color:white !important;
+    text-decoration:none;
+    border-radius:8px;
+    font-weight:bold;
+}
+.footer{
+    padding:20px;
+    text-align:center;
+    color:#888;
+    font-size:13px;
+    border-top:1px solid #eee;
+}
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>🎉 ¡Bienvenido/a!</h1>
+    </div>
+    <div class="content">
+        <h2>Hola, <%= name %> 👋</h2>
+        <p>
+            Nos alegra muchísimo que te hayas registrado.
+        </p>
+        <p>
+            Tu cuenta fue creada correctamente y ya podés comenzar a utilizar la aplicación.
+        </p>
+        <p>
+            Si este registro no fue realizado por vos, por favor ignorá este correo.
+        </p>
+        <center>
+            <a href="#" class="button">
+                Ingresar a la aplicación
+            </a>
+        </center>
+    </div>
+    <div class="footer">
+        Este correo fue enviado automáticamente.<br>
+        Por favor, no respondas a este mensaje.
+    </div>
+</div>
+</body>
+</html>

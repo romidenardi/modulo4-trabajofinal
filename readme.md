@@ -24,6 +24,7 @@ La base de datos debe ser MySQL y se debe utilizar Sequelize como ORM para inter
 * Dotenv.
 * Nodemailer.
 * EJS.
+* Winston.
 
 ### Uso de IA
 
@@ -33,4 +34,5 @@ Se utilizó inteligencia artificial generativa para:
 * Analizar la estructura óptima para el desarrollo del CRUD.
 * Agregar validaciones.
 * Validar código y corregir errores.
-* Analizar y desarrollar funcionalidades extra (envío de email de bienvenida con plantilla EJS y documentación).
+* Analizar y desarrollar funcionalidades extra (envío de email de bienvenida con plantilla EJS y documentación con Winston).
+* Estilos CSS para la plantilla EJS.

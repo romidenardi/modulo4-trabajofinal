@@ -1,6 +1,7 @@
 import bcrypt from "bcrypt";
 import User from "../database/models/users.js";
 import { sendWelcomeEmail } from "./mail-services.js";
+import logger from "../config/logger.js";
 
 const SALT_ROUNDS = 10;
 
@@ -13,10 +14,12 @@ export async function createUser(data) {
     password: hashedPassword,
     role,
   });
+  logger.info(`Nuevo usuario registrado: ${newUser.name} (${newUser.email})`);
   try {
-    await sendWelcomeEmail(newUser);
+  await sendWelcomeEmail(newUser.toJSON());
+  logger.info(`Correo de bienvenida enviado a ${newUser.email}`);
   } catch (error) {
-    console.error("Error al enviar el mail de bienvenida:", error.message);
+    logger.error(`Error al enviar mail de bienvenida: ${error.message}`);
   }  
   const {password: _, ...newUserWOutPass} = newUser.toJSON();
   return newUserWOutPass;
@@ -45,6 +48,7 @@ export async function updateUser(id, data) {
   await User.update(updateData, {
     where: {id},
   });
+  logger.info(`Usuario ${id} actualizado correctamente.`);
   return await searchById(id);
 };
 
@@ -52,4 +56,5 @@ export async function deleteUser(id) {
   return await User.destroy({
     where: {id},
   });
+  logger.info(`Usuario ${id} eliminado correctamente.`);
 };
